@@ -77,17 +77,17 @@ Escalate:  complaint · medical question · pricing negotiation · >2 unanswered
 │  │                        STAGE 1: FAQ AGENT                     │  │
 │  │                                                               │  │
 │  │  Input : customer message (str)                               │  │
-│  │  Tools : OpenAI gpt-4.1-mini + sop.json injection            │  │
+│  │  Tools : OpenAI gpt-4.1-mini + sop.json injection             │  │
 │  │  Output: FAQResponse                                          │  │
 │  │          { answer, confidence, source_found,                  │  │
 │  │            requires_escalation }                              │  │
 │  └───────────────────┬───────────────────────────────────────────┘  │
 │                      │                                              │
-│      ┌───────────────┼──────────────────┐                          │
-│      │               │                  │                          │
-│  source_found=F   confidence<0.5   faq_escalation=T               │
-│      │               │                  │                          │
-│      └───────────────▼──────────────────┘                          │
+│      ┌───────────────┼──────────────────┐                           │
+│      │               │                  │                           │
+│  source_found=F   confidence<0.5   faq_escalation=T                 │
+│      │               │                  │                           │
+│      └───────────────▼──────────────────┘                           │
 │                      │                                              │
 │  ┌───────────────────▼───────────────────────────────────────────┐  │
 │  │                   STAGE 3: ESCALATION AGENT                   │  │
@@ -96,28 +96,28 @@ Escalate:  complaint · medical question · pricing negotiation · >2 unanswered
 │  │  Layer B: LLM semantic classification (nuanced sentiment)     │  │
 │  │  Layer C: unanswered_count threshold (>2 triggers escalation) │  │
 │  │                                                               │  │
-│  │  Output: EscalationResult { escalate: bool, reason: str }    │  │
+│  │  Output: EscalationResult { escalate: bool, reason: str }     │  │
 │  └───────────────────┬───────────────────────────────────────────┘  │
 │                      │                                              │
 │              ┌───────┴────────┐                                     │
 │           escalate=T      escalate=F                                │
 │              │                │                                     │
 │              ▼                ▼                                     │
-│         ┌────────┐   ┌────────────────────────────────────────┐    │
-│         │ HUMAN  │   │         STAGE 2: QUALIFICATION AGENT   │    │
-│         │HANDOFF │   │  (triggered once per session on first  │    │
-│         │+ LOG   │   │   successful SOP answer)               │    │
-│         └────────┘   │                                        │    │
-│                      │  Q1: Business Type                     │    │
-│                      │  Q2: Team Size                         │    │
-│                      │  Q3: Current Tools                     │    │
-│                      │                                        │    │
-│                      │  Output: LeadData                      │    │
-│                      └────────────────┬───────────────────────┘    │
-│                                       │                            │
+│         ┌────────┐   ┌────────────────────────────────────────┐     │
+│         │ HUMAN  │   │         STAGE 2: QUALIFICATION AGENT   │     │
+│         │HANDOFF │   │  (triggered once per session on first  │     │
+│         │+ LOG   │   │   successful SOP answer)               │     │
+│         └────────┘   │                                        │     │
+│                      │  Q1: Business Type                     │     │
+│                      │  Q2: Team Size                         │     │
+│                      │  Q3: Current Tools                     │     │
+│                      │                                        │     │
+│                      │  Output: LeadData                      │     │ 
+│                      └────────────────┬───────────────────────┘     │
+│                                       │                             │
 │                              [loop continues]                       │
-│                                       │                            │
-│                              session ends (exit/bye)               │
+│                                       │                             │
+│                              session ends (exit/bye)                │
 └───────────────────────────────────────┼─────────────────────────────┘
                                         │
                                         ▼
