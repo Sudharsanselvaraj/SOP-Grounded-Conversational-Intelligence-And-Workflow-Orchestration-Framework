@@ -67,17 +67,17 @@ Escalate:  complaint · medical question · pricing negotiation · >2 unanswered
 │  │                        STAGE 1: FAQ AGENT                     │  │
 │  │                                                               │  │
 │  │  Input : customer message (str)                               │  │
-│  │  Tools : OpenAI gpt-4.1-mini + sop.json injection            │  │
+│  │  Tools : OpenAI gpt-4.1-mini + sop.json injection             │  │
 │  │  Output: FAQResponse                                          │  │
 │  │          { answer, confidence, source_found,                  │  │
 │  │            requires_escalation }                              │  │
 │  └───────────────────┬───────────────────────────────────────────┘  │
 │                      │                                              │
-│      ┌───────────────┼──────────────────┐                          │
-│      │               │                  │                          │
-│  source_found=F   confidence<0.5   faq_escalation=T               │
-│      │               │                  │                          │
-│      └───────────────▼──────────────────┘                          │
+│      ┌───────────────┼──────────────────┐                           │
+│      │               │                  │                           │
+│  source_found=F   confidence<0.5   faq_escalation=T                 │
+│      │               │                  │                           │
+│      └───────────────▼──────────────────┘                           │
 │                      │                                              │
 │  ┌───────────────────▼───────────────────────────────────────────┐  │
 │  │                   STAGE 3: ESCALATION AGENT                   │  │
@@ -86,28 +86,28 @@ Escalate:  complaint · medical question · pricing negotiation · >2 unanswered
 │  │  Layer B: LLM semantic classification (nuanced sentiment)     │  │
 │  │  Layer C: unanswered_count threshold (>2 triggers escalation) │  │
 │  │                                                               │  │
-│  │  Output: EscalationResult { escalate: bool, reason: str }    │  │
+│  │  Output: EscalationResult { escalate: bool, reason: str }     │  │
 │  └───────────────────┬───────────────────────────────────────────┘  │
 │                      │                                              │
 │              ┌───────┴────────┐                                     │
 │           escalate=T      escalate=F                                │
 │              │                │                                     │
 │              ▼                ▼                                     │
-│         ┌────────┐   ┌────────────────────────────────────────┐    │
-│         │ HUMAN  │   │         STAGE 2: QUALIFICATION AGENT   │    │
-│         │HANDOFF │   │  (triggered once per session on first  │    │
-│         │+ LOG   │   │   successful SOP answer)               │    │
-│         └────────┘   │                                        │    │
-│                      │  Q1: Business Type                     │    │
-│                      │  Q2: Team Size                         │    │
-│                      │  Q3: Current Tools                     │    │
-│                      │                                        │    │
-│                      │  Output: LeadData                      │    │
-│                      └────────────────┬───────────────────────┘    │
-│                                       │                            │
+│         ┌────────┐   ┌────────────────────────────────────────┐     │
+│         │ HUMAN  │   │         STAGE 2: QUALIFICATION AGENT   │     │
+│         │HANDOFF │   │  (triggered once per session on first  │     │
+│         │+ LOG   │   │   successful SOP answer)               │     │
+│         └────────┘   │                                        │     │
+│                      │  Q1: Business Type                     │     │
+│                      │  Q2: Team Size                         │     │
+│                      │  Q3: Current Tools                     │     │
+│                      │                                        │     │
+│                      │  Output: LeadData                      │     │
+│                      └────────────────┬───────────────────────┘     │
+│                                       │                             │
 │                              [loop continues]                       │
-│                                       │                            │
-│                              session ends (exit/bye)               │
+│                                       │                             │
+│                              session ends (exit/bye)                │
 └───────────────────────────────────────┼─────────────────────────────┘
                                         │
                                         ▼
@@ -234,27 +234,27 @@ Five independent defensive layers — each capable of catching what the previous
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │  LAYER 1 — Prompt Restriction                                       │
-│  "Your ONLY knowledge source is the SOP data provided below."      │
-│  "You must NEVER invent, guess, or infer facts not in the SOP."    │
+│  "Your ONLY knowledge source is the SOP data provided below."       │
+│  "You must NEVER invent, guess, or infer facts not in the SOP."     │
 │  Capitalised ONLY + triple-negative (invent/guess/infer) closes     │
 │  the semantic space through which compliant non-compliance occurs.  │
 ├─────────────────────────────────────────────────────────────────────┤
 │  LAYER 2 — Source Validation (source_found field)                   │
 │  Model self-reports whether its answer derives from SOP.            │
-│  source_found=false → immediate escalation, no retry.              │
+│  source_found=false → immediate escalation, no retry.               │
 ├─────────────────────────────────────────────────────────────────────┤
 │  LAYER 3 — Confidence Score with Calibration Rubric                 │
 │  Model reports confidence on a rubric anchored to observable        │
-│  evidence. Confidence < 0.5 → escalation regardless of answer.     │
+│  evidence. Confidence < 0.5 → escalation regardless of answer.      │
 ├─────────────────────────────────────────────────────────────────────┤
 │  LAYER 4 — Escalation Fallback (no second attempt)                  │
 │  On any failure signal, the system escalates — it never retries     │
 │  with a different prompt or attempts to synthesise an answer.       │
 ├─────────────────────────────────────────────────────────────────────┤
 │  LAYER 5 — unanswered_count Threshold                               │
-│  Tracks consecutive out-of-scope answers in app.py.                │
-│  Counter resets to 0 on every successful SOP answer.               │
-│  unanswered_count > 2 → forced escalation.                         │
+│  Tracks consecutive out-of-scope answers in app.py.                 │
+│  Counter resets to 0 on every successful SOP answer.                │
+│  unanswered_count > 2 → forced escalation.                          │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
