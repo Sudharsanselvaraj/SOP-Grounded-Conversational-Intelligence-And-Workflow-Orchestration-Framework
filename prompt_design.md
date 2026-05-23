@@ -1,15 +1,3 @@
-<div align="center">
-
-# SOP-Grounded Conversational Intelligence & Workflow Orchestration Framework
-
-**Production-grade agentic AI customer support system grounded in business SOP data**
-
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-[![OpenAI](https://img.shields.io/badge/OpenAI-gpt--4.1--mini-412991?style=flat-square&logo=openai&logoColor=white)](https://openai.com/)
-[![Pydantic](https://img.shields.io/badge/Pydantic-v2-E92063?style=flat-square&logo=pydantic&logoColor=white)](https://docs.pydantic.dev/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-[![Architecture](https://img.shields.io/badge/Architecture-Multi--Agent-orange?style=flat-square)]()
-[![Hallucination](https://img.shields.io/badge/Hallucination_Prevention-5_Layers-red?style=flat-square)]()
 
 > Built as part of the **Closira AI Engineering Internship Assignment** · May 2025  
 > Demonstrates: Prompt Engineering · Agentic Workflow Design · Hallucination Prevention · Structured Outputs
