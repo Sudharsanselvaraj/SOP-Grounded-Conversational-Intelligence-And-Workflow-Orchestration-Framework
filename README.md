@@ -244,27 +244,27 @@ Five independent defensive layers — each capable of catching what the previous
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │  LAYER 1 — Prompt Restriction                                       │
-│  "Your ONLY knowledge source is the SOP data provided below."      │
-│  "You must NEVER invent, guess, or infer facts not in the SOP."    │
+│  "Your ONLY knowledge source is the SOP data provided below."       │
+│  "You must NEVER invent, guess, or infer facts not in the SOP."     │
 │  Capitalised ONLY + triple-negative (invent/guess/infer) closes     │
 │  the semantic space through which compliant non-compliance occurs.  │
 ├─────────────────────────────────────────────────────────────────────┤
 │  LAYER 2 — Source Validation (source_found field)                   │
 │  Model self-reports whether its answer derives from SOP.            │
-│  source_found=false → immediate escalation, no retry.              │
+│  source_found=false → immediate escalation, no retry.               │
 ├─────────────────────────────────────────────────────────────────────┤
 │  LAYER 3 — Confidence Score with Calibration Rubric                 │
 │  Model reports confidence on a rubric anchored to observable        │
-│  evidence. Confidence < 0.5 → escalation regardless of answer.     │
+│  evidence. Confidence < 0.5 → escalation regardless of answer.      │
 ├─────────────────────────────────────────────────────────────────────┤
 │  LAYER 4 — Escalation Fallback (no second attempt)                  │
 │  On any failure signal, the system escalates — it never retries     │
 │  with a different prompt or attempts to synthesise an answer.       │
 ├─────────────────────────────────────────────────────────────────────┤
 │  LAYER 5 — unanswered_count Threshold                               │
-│  Tracks consecutive out-of-scope answers in app.py.                │
-│  Counter resets to 0 on every successful SOP answer.               │
-│  unanswered_count > 2 → forced escalation.                         │
+│  Tracks consecutive out-of-scope answers in app.py.                 │
+│  Counter resets to 0 on every successful SOP answer.                │
+│  unanswered_count > 2 → forced escalation.                          │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -477,7 +477,7 @@ You: exit
 ────────────── Generating Conversation Summary ──────────────
 
 ╭─────────────── Session Summary ────────────────╮
-│ {                                               │
+│ {                                              │
 │   "customer_intent": "Enquiring about Botox    │
 │     pricing before booking",                   │
 │   "questions_asked": [                         │
@@ -490,11 +490,11 @@ You: exit
 │   },                                           │
 │   "sop_gaps": [],                              │
 │   "escalations": [],                           │
-│   "recommended_next_action": "Follow up to    │
+│   "recommended_next_action": "Follow up to     │
 │     convert consultation interest to booking", │
 │   "conversation_status": "Completed"           │
-│ }                                               │
-╰─────────────────────────────────────────────────╯
+│ }                                              │
+╰────────────────────────────────────────────────╯
 ```
 
 ---
