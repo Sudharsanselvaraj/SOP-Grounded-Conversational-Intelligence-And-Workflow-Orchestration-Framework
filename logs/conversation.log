@@ -1,0 +1,11 @@
+# This file is auto-generated at runtime by the logging system.
+{"event": "conversation_turn", "user_message": "What are your Botox prices?", "ai_response": "Botox starts from £200.", "confidence": 0.98, "escalation_reason": null, "timestamp": "2026-05-23T03:07:39.887398+00:00", "level": "INFO"}
+{"event": "faq_answered", "question": "What are your Botox prices?", "topic": "botox_pricing", "timestamp": "2026-05-23T03:07:39.887630+00:00", "level": "INFO"}
+{"event": "escalation_triggered", "escalate": true, "reason": "Human request detected", "timestamp": "2026-05-23T03:07:39.887799+00:00", "level": "INFO"}
+{"event": "summary_generated", "customer_intent": "Customer asked about pricing and booking details", "questions_asked": ["What are your Botox prices?"], "lead_information": {"business_type": "Clinic", "team_size": "12", "current_tools": "HubSpot"}, "sop_gaps": [], "escalations": [], "recommended_next_action": "Follow up with the customer and offer the next best step from the SOP.", "conversation_status": "Completed", "timestamp": "2026-05-23T03:07:39.888007+00:00", "level": "INFO"}
+{"event": "conversation_turn", "user_message": "What are your Botox prices?", "ai_response": "Botox treatments start from £200.", "confidence": 0.98, "escalation_reason": null, "timestamp": "2026-05-23T03:09:06.098807+00:00", "level": "INFO"}
+{"event": "faq_answered", "question": "What are your Botox prices?", "topic": "botox_pricing", "timestamp": "2026-05-23T03:09:06.099122+00:00", "level": "INFO"}
+{"event": "conversation_turn", "user_message": "How do I cancel an appointment?", "ai_response": "Our cancellation policy requires a minimum of 24 hours' notice.", "confidence": 0.97, "escalation_reason": null, "timestamp": "2026-05-23T03:09:06.099334+00:00", "level": "INFO"}
+{"event": "faq_answered", "question": "How do I cancel an appointment?", "topic": "cancellation_policy", "timestamp": "2026-05-23T03:09:06.099352+00:00", "level": "INFO"}
+{"event": "conversation_turn", "user_message": "Can I book via WhatsApp?", "ai_response": "You can book via WhatsApp or our website.", "confidence": 0.96, "escalation_reason": null, "timestamp": "2026-05-23T03:09:06.099400+00:00", "level": "INFO"}
+{"event": "faq_answered", "question": "Can I book via WhatsApp?", "topic": "booking_channels", "timestamp": "2026-05-23T03:09:06.099413+00:00", "level": "INFO"}

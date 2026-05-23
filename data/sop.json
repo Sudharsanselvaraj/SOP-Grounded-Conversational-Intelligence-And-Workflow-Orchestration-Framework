@@ -1,0 +1,45 @@
+{
+  "business": {
+    "name": "Bloom Aesthetics Clinic",
+    "tagline": "Your trusted aesthetic wellness partner"
+  },
+  "hours": {
+    "days": "Monday to Saturday",
+    "open": "9:00 AM",
+    "close": "7:00 PM",
+    "closed_days": ["Sunday"]
+  },
+  "services": [
+    {
+      "name": "Botox",
+      "price_from": 200,
+      "currency": "GBP",
+      "description": "Non-surgical treatment to reduce fine lines and wrinkles"
+    },
+    {
+      "name": "Fillers",
+      "price_from": 250,
+      "currency": "GBP",
+      "description": "Dermal fillers for volume restoration and contouring"
+    },
+    {
+      "name": "Free Consultation",
+      "price_from": 0,
+      "currency": "GBP",
+      "description": "Complimentary consultation to discuss your aesthetic goals"
+    }
+  ],
+  "booking": {
+    "channels": ["WhatsApp", "Website"],
+    "cancellation_policy": "Minimum 24 hours notice required for cancellations"
+  },
+  "escalation_rules": {
+    "triggers": [
+      "complaint",
+      "medical_question",
+      "pricing_negotiation",
+      "repeated_unknown_questions"
+    ],
+    "max_unanswered_before_escalation": 2
+  }
+}
