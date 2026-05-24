@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/openai-white-lockup.png" height="70" alt="OpenAI" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/langgraph.png" height="80" alt="LangGraph" />
+<img src="assets/openai-white-lockup.png" height="70" alt="OpenAI" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/langgraph.png" height="81" alt="LangGraph" />
 
 </div>
 <div align="center">
